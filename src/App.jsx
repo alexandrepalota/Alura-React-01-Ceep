@@ -6,20 +6,29 @@ import ListaDeNotas from "./components/ListaDeNotas";
 class App extends Component {
 
   constructor() {
-    super()
-    this.notas = []
+    super();
+
+    this.state = {
+      notas:[]
+    }
+
+    this.criarNota = this.criarNota.bind(this)
   }
 
   criarNota(titulo, texto) {
     const novaNota = {titulo, texto}
-    this.notas.push(novaNota)
+    const novoArrayNotas = [...this.state.notas, novaNota]
+    const novoEstado = {
+      notas: novoArrayNotas
+    }
+    this.setState(novoEstado)
   }
 
   render() {
     return (
       <section className="conteudo">
         <FormularioCadastro onCriarNota={this.criarNota} />
-        <ListaDeNotas notas={this.notas} />
+        <ListaDeNotas notas={this.state.notas} />
       </section>
     )
   }

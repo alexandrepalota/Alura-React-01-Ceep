@@ -4,13 +4,15 @@ import "./estilo.css"
 
 class ListaDeNotas extends Component {
 
+    // Quando o construtor é usado só para receber as props, ele pode ser omitido
+
     render() {
         return (
             <ul className='lista-notas'>
-                {Array.of("Trabalho", "Trabalho", "Estudos").map((categoria, index) => {
+                {this.props.notas.map((nota, index) => {
                     return (
                         <li key={index} className='lista-notas_item'>
-                            <CardNota />
+                            <CardNota nota={nota} />
                         </li>
                     )
                 })}
