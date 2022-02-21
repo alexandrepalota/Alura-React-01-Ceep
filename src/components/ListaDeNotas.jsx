@@ -5,15 +5,14 @@ class ListaDeNotas extends Component {
     render() {
         return (
             <ul>
-                <li>
-                    <CardNota />
-                </li>
-                <li>
-                    <CardNota />
-                </li>
-                <li>
-                    <CardNota />
-                </li>
+                {Array.of("Trabalho", "Trabalho", "Estudos").map(categoria => {
+                    return (
+                        <li key={categoria}>
+                            <div>{categoria}</div>
+                            <CardNota />
+                        </li>
+                    )
+                })}
             </ul>
         )
     }
